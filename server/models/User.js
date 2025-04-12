@@ -9,7 +9,7 @@ const userSchema =  new mongoose.Schema(
         imageUrl : {type : String, required : true},
         enrolledCourses : [
             {
-                type : mongoose.schema.types.objectId,
+                type : mongoose.Schema.Types.ObjectId,
                 ref : 'Course'
             }
         ],
