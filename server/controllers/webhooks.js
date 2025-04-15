@@ -67,8 +67,8 @@ export const stripeWebhooks = async (request, response) => {
         event = Stripe.webhooks.constructEvent(request.body, sig, process.env.STRIPE_WEBHOOK_SECRET_KEY);
     }
     catch (err) {
-        response.status(400).send(`Webhook Error: ${err.message}`);
-    }
+        return response.status(400).send(`Webhook Error: ${err.message}`);
+    }   
 
     switch (event.type) {
         case 'payment_intent.succeeded': {
