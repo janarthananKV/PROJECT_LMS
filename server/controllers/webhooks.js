@@ -58,7 +58,7 @@ export const clerkWebhooks = async(req, res) => {
 
 
 const stripeInstance = new Stripe(process.env.STRIPE_SECRET_KEY) 
-export const stripeWebhooks =async (request, response) => {
+export const stripeWebhooks = async (request, response) => {
     const sig = request.headers['stripe-signature'];
 
     let event;
@@ -106,12 +106,9 @@ export const stripeWebhooks =async (request, response) => {
             await purchaseData.save()
           break;
         }
-
         default:
           console.log(`Unhandled event type ${event.type}`);
-    
     }
-
     response.json({received: true});
 }
 
